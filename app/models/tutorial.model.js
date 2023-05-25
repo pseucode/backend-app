@@ -49,7 +49,7 @@ Tutorial.getAll = (title, result) => {
   sql.query(query, (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(null, err);
+      result(err, null);
       return;
     }
 
@@ -62,12 +62,12 @@ Tutorial.getAllPublished = result => {
   sql.query("SELECT * FROM tutorials WHERE published=true", (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(null, err);
+      result(err, null);
       return;
     }
 
     console.log("tutorials: ", res);
-    result(null, res);
+    result(err, null);
   });
 };
 
@@ -78,7 +78,7 @@ Tutorial.updateById = (id, tutorial, result) => {
     (err, res) => {
       if (err) {
         console.log("error: ", err);
-        result(null, err);
+        result(err, null);
         return;
       }
 
@@ -98,7 +98,7 @@ Tutorial.remove = (id, result) => {
   sql.query("DELETE FROM tutorials WHERE id = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(null, err);
+      result(err, null);
       return;
     }
 
@@ -117,7 +117,7 @@ Tutorial.removeAll = result => {
   sql.query("DELETE FROM tutorials", (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(null, err);
+      result(err, null);
       return;
     }
 

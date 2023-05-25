@@ -41,7 +41,17 @@ exports.findAll = (req, res) => {
   });
 };
 
-// Find a single Tutorial by Id
+exports.findAllPublished = (req, res) => {
+  Tutorial.getAllPublished((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
+    else res.send(data);
+  });
+}; 
+
 exports.findOne = (req, res) => {
   Tutorial.findById(req.params.id, (err, data) => {
     if (err) {
@@ -58,19 +68,6 @@ exports.findOne = (req, res) => {
   });
 };
 
-// find all published Tutorials
-exports.findAllPublished = (req, res) => {
-  Tutorial.getAllPublished((err, data) => {
-    if (err)
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
-    else res.send(data);
-  });
-};
-
-// Update a Tutorial identified by the id in the request
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
@@ -100,7 +97,6 @@ exports.update = (req, res) => {
   );
 };
 
-// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
   Tutorial.remove(req.params.id, (err, data) => {
     if (err) {
@@ -117,7 +113,6 @@ exports.delete = (req, res) => {
   });
 };
 
-// Delete all Tutorials from the database.
 exports.deleteAll = (req, res) => {
   Tutorial.removeAll((err, data) => {
     if (err)
