@@ -1,6 +1,6 @@
 module.exports = {
-  HOST: "localhost",
-  USER: "root",
-  PASSWORD: "",
-  DB: "db-backendapp"
+  HOST: "db-backendapp.cbugdgt26zmd.ap-southeast-1.rds.amazonaws.com",
+  USER: "admin",
+  PASSWORD: "admin123",
+  DB: "-"
 };
